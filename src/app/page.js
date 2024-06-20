@@ -1,95 +1,61 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import emblema1 from "/public/emblema1.jpg";
+import emblema2 from "/public/emblema2.jpg";
+import logoCliente from "/public/logoCliente.png";
+import { useState } from "react";
 
 export default function Home() {
+  const [adicionarEmblema, setAdicionarEmblema] = useState(false);
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
+      <header className={styles.headerBO}>
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <Image alt="Step" width={84} height={53} src={logoCliente} />
+
+          <h1>Gestão de Emblemas</h1>
         </div>
+        <button
+          onClick={() => {
+            setAdicionarEmblema(true);
+          }}
+        >
+          Adicionar Emblema
+        </button>
+      </header>
+
+      <div className={styles.emblemasContainer}>
+        <section className={styles.emblemaContainer}>
+          <Image alt="Step" width={200} height={200} src={emblema1} />
+          <p>Nome do Emblema 1</p>
+        </section>
+        <section className={styles.emblemaContainer}>
+          <Image alt="Step" width={200} height={200} src={emblema2} />
+          <p>Nome do Emblema 2</p>
+        </section>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {adicionarEmblema && (
+        <div className={styles.newEmblemaContainer}>
+          <h1>
+            Criar um novo <b>Emblema</b>
+          </h1>
+          <header>
+            <div className={styles.newEmblemaOption}>
+              <Image alt="Step" width={200} height={200} src={emblema1} />
+            </div>
+            <div className={styles.newEmblemaOption}>
+              <Image alt="Step" width={200} height={200} src={emblema2} />
+            </div>
+            {/* <div className={styles.newEmblemaOption}>
+            <Image alt="Step" width={200} height={200} src={emblema1} />
+          </div> */}
+          </header>
+        </div>
+      )}
     </main>
   );
 }
